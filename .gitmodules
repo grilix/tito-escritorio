@@ -1,0 +1,3 @@
+[submodule "lib/tito"]
+	path = lib/tito
+	url = https://github.com/grilix/tito

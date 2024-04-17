@@ -1,0 +1,7 @@
+#define WIFI_SSID "<ssid>"
+#define WIFI_PASSWORD "<password>"
+
+#define MQTT_HOST "<host>"
+#define MQTT_USER "<user>"
+#define MQTT_PASSWORD "<password>"
+#define MQTT_PORT 1883
