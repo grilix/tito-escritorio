@@ -1,0 +1,46 @@
+// vim: expandtab tabstop=2 shiftwidth=2
+
+// Ejemplo de configuración de things para openhab
+
+Bridge mqtt:broker:myBroker [host="<host>", username="<user>", password="<pass>", secure=false] {
+  // ...
+
+  Thing topic officeDesktop "Escritorio oficina" @ "Oficina" {
+    Channels:
+      Type switch : workbenchLight "luz mesa" [
+        stateTopic="home/office-esp/lights/workbench/state",
+        commandTopic="home/office-esp/lights/workbench/command",
+        on="on", off="off"
+      ]
+      Type switch : desktopLight "luz escritorio" [
+        stateTopic="home/office-esp/lights/desktop/state",
+        commandTopic="home/office-esp/lights/desktop/command",
+        on="on", off="off"
+      ]
+  }
+
+  Thing topic officeESP "ESP escritorio" @ "Oficina" {
+    Channels:
+      Type number : vcc "voltaje" [
+        stateTopic="home/office-esp/vcc/state"
+      ]
+      Type number : uptime "uptime" [
+        stateTopic="home/office-esp/uptime/state"
+      ]
+  }
+
+  Thing topic officeClimate "Clima oficina" @ "Oficina" {
+    Channels:
+      Type number : temperature "temperatura" [
+        stateTopic="home/office-esp/bme/temperature/state"
+      ]
+      Type number : humidity "humedad" [
+        stateTopic="home/office-esp/bme/humidity/state"
+      ]
+      Type number : pressure "presión atmosférica" [
+        stateTopic="home/office-esp/bme/pressure/state"
+      ]
+  }
+
+  // ...
+}

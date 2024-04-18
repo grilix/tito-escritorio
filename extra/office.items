@@ -1,0 +1,23 @@
+// vim: expandtab tabstop=2 shiftwidth=2
+
+// Ejemplo de configuración de items para openhab
+
+Group gIndoor "Adentro" ["Indoor"]
+  // ...
+  Group gHouse "Casa" <house> (gIndoor) ["House"]
+    // ...
+    Group gOffice "Oficina" (gHouse) ["Office"]
+      Group gOfficeClimate (gOffice) ["Sensor"]
+      Group gOfficeDeskTopLight (gOffice) ["Lightbulb"]
+      Group gOfficeWorkbenchLight (gOffice) ["Lightbulb"]
+      // ...
+
+Number             officeESPUptime      "Oficina ESP uptime [%d s]"    {channel="mqtt:topic:myBroker:officeESP:uptime"}
+Number             officeESPVCCVoltage  "Oficina ESP voltaje [%.2f V]" {channel="mqtt:topic:myBroker:officeESP:vcc"}
+
+Number:Temperature officeTemperature    "Oficina Temperatura [%.1f C]" <temperature> (gOfficeClimate) ["Measurement", "Temperature"] {channel="mqtt:topic:myBroker:officeClimate:temperature"}
+Number             officeHumidity       "Oficina Humedad [%.1f %%]"    <humidity> (gOfficeClimate)    ["Measurement", "Humidity"]    {channel="mqtt:topic:myBroker:officeClimate:humidity"}
+Number:Pressure    officePressure       "Oficina Presión [%.2f hPa]"   <pressure> (gOfficeClimate)    ["Measurement", "Pressure"]    {channel="mqtt:topic:myBroker:officeClimate:pressure"}
+
+Switch             officeDesktopLight   "Luz Escritorio" <light> (gOfficeDesktopLight)   ["Switch"] {channel="mqtt:topic:myBroker:officeDesktop:desktopLight"}
+Switch             officeWorkbenchLight "Luz Mesa"       <light> (gOfficeWorkbenchLight) ["Switch"] {channel="mqtt:topic:myBroker:officeDesktop:workbenchLight"}
