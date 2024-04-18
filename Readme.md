@@ -12,6 +12,8 @@ Implementación para el controlador de las luces del escritorio usando
 - Relay en pin D5
 - Relay en pin D6
 
+![Foto ilustrativa](extra/escritorio.jpg)
+
 ## Luz de estado
 
 Estado|Descripción
